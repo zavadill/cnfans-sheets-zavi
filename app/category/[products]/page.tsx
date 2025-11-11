@@ -6,9 +6,17 @@ import Grid from "@/app/components/Grid";
 import SearchBar from "@/app/components/Search";
 // Importujeme 'useParams' pro získání segmentu URL a 'useSearchParams' pro query
 import { useSearchParams, useParams } from 'next/navigation';
+import { Metadata } from "next";
 
-// 2. Typy pro props (CategoryPageProps) se v tomto případě nepoužívají,
-// protože komponenta 'Page' nepřijímá 'params' jako prop.
+type CategoryPageProps = {
+  params: {
+    products: string;
+  };
+  searchParams: {
+    q?: string;
+  };
+};
+
 
 export default function CategoryPage() {
 
