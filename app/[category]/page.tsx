@@ -1,4 +1,5 @@
 import React from "react";
+import Grid from "../components/Grid";
 
 
 type CategoryPageProps = {
@@ -23,8 +24,19 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           Zobrazují se produkty pro "{kategoryNazev}"...
         </p>
 
-        {/* Zde bude tvoje mřížka s produkty */}
-        {/* <ProductGrid products={vyfiltrovaneProdukty} /> */}
+        <div className=' max-w-7xl mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+            <Grid />
+            <Grid />
+            <Grid />
+            <Grid />
+            <Grid />
+            <Grid />
+            <Grid />
+            <Grid />
+            <Grid />
+            <Grid />
+            <Grid />
+          </div>
 
       </main>
     </div>
