@@ -23,17 +23,8 @@ export default function Home() {
             <p className='text-2xl'>This is my best CnFans finds</p>
           </div>
           <div className='mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-            <Grid />
-            <Grid />
-            <Grid />
-            <Grid />
-            <Grid />
-            <Grid />
-            <Grid />
-            <Grid />
-            <Grid />
-            <Grid />
-            <Grid />
+            <Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/>
+            <Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/><Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/>
           </div>
         </div>
       </div>
