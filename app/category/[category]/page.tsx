@@ -38,7 +38,7 @@ export default function CategoryPage({ params, searchParams }: CategoryPageProps
     <div className="bg-[#121212] text-white/90 min-h-screen pt-25">
       <main className="max-w-7xl mx-auto px-4">
 
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-row justify-between items-center gap-5">
           <Link href={`/category/${kategoryNazev}`}><h1 className="font-bold text-4xl">{kategoryNazev}</h1></Link>
           <SearchBar />
         </div>

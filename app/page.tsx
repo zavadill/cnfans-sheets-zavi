@@ -32,9 +32,9 @@ export default function Home() {
         <ModelScene />
       </header>
       <div className='bg-[#121212] py-20 px-5 space-y-30'>
-        <Marquee autoFill gradient gradientColor='#121212' className='max-w-7xl mx-auto text-2xl'>
+        <Marquee autoFill gradient gradientColor='#121212' className='max-w-7xl mx-auto text-xl sm:text-2xl'>
           {marqueeList.map((item) => (
-            <p className='px-8' key={item}>{item}</p>
+            <p className=' px-4 sm:px-8' key={item}>{item}</p>
           ))}
         </Marquee>
         <div className='max-w-7xl mx-auto space-y-5'>
