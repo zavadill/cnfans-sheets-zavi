@@ -13,7 +13,7 @@ const Grid = (props: Props) => {
   return (
     <Link href={props.href} className="bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
       {/* Placeholder pro obrázek */}
-      <div className='block w-full h-40 bg-gray-700' />
+      <div className='block w-full h-60 bg-gray-700' />
       
       {/* Placeholder pro obsah */}
       <div className="p-4 flex flex-col">

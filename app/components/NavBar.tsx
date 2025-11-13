@@ -83,7 +83,7 @@ const NavBar = () => {
   return (
     // Dynamické pozadí podle scrollu
     <nav className={`
-        h-20 fixed w-full text-white flex items-center px-0 sm:px-5 z-40 
+        h-20 fixed w-full text-white flex items-center px-5 sm:px-5 z-40 
         transition-all duration-300 ease-in-out
         ${hasScrolled ? 'bg-black/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'}
     `}>
