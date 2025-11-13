@@ -49,7 +49,7 @@ const NavBar = () => {
   if (isOpen) {
     return (
       // "Hezčí" pozadí s backdrop-blur
-      <nav className='fixed bg-black/90 backdrop-blur-lg h-screen w-full top-0 z-50 text-white flex justify-center items-center text-center'>
+      <nav className='fixed bg-black/70 backdrop-blur-lg h-screen w-full top-0 z-50 text-[--foreground] flex justify-center items-center text-center'>
         <div className='flex flex-col gap-4 text-3xl'> {/* Snížen 'gap' pro lepší vzhled */}
           {/* Logo i v mobilním menu */}
 
@@ -88,7 +88,7 @@ const NavBar = () => {
         ${hasScrolled ? 'bg-black/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'}
     `}>
       <div className='flex flex-row items-center justify-between w-full'>
-        <Link href={"/"} className='text-xl font-bold'>Zavi Finds</Link>
+        <Link href={"/"} className='text-xl font-bold'>TheVault</Link>
 
         {/* Desktopové odkazy */}
         <div className=' flex-row items-center gap-5 hidden sm:flex'>

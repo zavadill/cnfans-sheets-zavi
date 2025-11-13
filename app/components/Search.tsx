@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
 
+
 const SearchBar = () => {
   const [query, setQuery] = useState('');
   const router = useRouter();
@@ -24,6 +25,9 @@ const SearchBar = () => {
       router.push(pathname);
     }
     // ============================
+
+    setQuery("")
+    
   };
 
   return (

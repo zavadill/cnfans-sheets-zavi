@@ -1,5 +1,6 @@
-import Link from 'next/link'
+import Image from 'next/image'
 import React from 'react'
+import Link from 'next/link'
 
 export type Props = {
   title: string,
@@ -12,7 +13,7 @@ const Grid = (props: Props) => {
   return (
     <Link href={props.href} className="bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
       {/* Placeholder pro obrázek */}
-      <div className='h-50 bg-[#393939] flex justify-center items-center'>{props.img}</div>
+      <div className='block w-full h-40 bg-gray-700' />
       
       {/* Placeholder pro obsah */}
       <div className="p-4 flex flex-col">
