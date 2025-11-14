@@ -44,6 +44,23 @@ const NavBar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      // Když je menu otevřené, ZAMKNI scroll na <body>
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Když je menu zavřené, POVOL scroll na <body>
+      document.body.style.overflow = 'auto';
+    }
+
+    // 3. "Úklidová" funkce
+    //    Tohle je pojistka: pokud se komponenta z nějakého důvodu odpojí,
+    //    vždy se ujistí, že scroll je zase povolený.
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]); // <-- Tento efekt se spustí VŽDY, když se změní 'isOpen'
+  // ===================================
 
   // 5. Opravená logika: if (isOpen) - zobrazí se mobilní menu
   if (isOpen) {

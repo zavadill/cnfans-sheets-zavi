@@ -1,8 +1,8 @@
 // app/products/[id]/page.tsx
 
 // 1. Musíme importovat React, abychom mohli použít 'use'
+import Link from 'next/link';
 import React from 'react';
-
 // 2. Upravíme typ: 'params' je 'Promise'
 type ProductPageProps = {
   params: Promise<{
@@ -19,9 +19,21 @@ export default function ProductPage({ params }: ProductPageProps) {
   // 5. Teď můžeme bezpečně přistoupit k 'id'
   const productId = resolvedParams.id;
 
+
+
   return (
-    <div className='h-screen flex justify-center items-center text-white text-3xl'>
-      ID produktu z URL je: {productId}
-    </div>
+    <div className='min-h-screen flex justify-center items-center text-white'>
+      <div className='flex flex-col-reverse pt-30 sm:flex-row items-center gap-20'>
+        <div className='gap-5 flex flex-col'>
+          <div className='w-90 h-50 bg-gray-600'/>
+          <div className='w-90 h-50 bg-gray-600'/>
+        </div>
+        <div className='text-center text-2xl space-y-5'>
+          <h1 className='text-5xl'>Air Jordan 4 x Travis Scott</h1>
+          <h2>$33.70</h2>
+          <h3 className=''><Link href={"/"} className='px-5 py-2 rounded-lg bg-blue-600/40 '>CnFans Link</Link></h3>
+        </div>
+      </div>
+    </div>
   )
 }
