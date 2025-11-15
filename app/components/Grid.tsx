@@ -11,9 +11,9 @@ export type Props = {
 
 const Grid = (props: Props) => {
   return (
-    <Link href={props.href} className="bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+    <Link href={`/products/${props.href}`} className="bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
       {/* Placeholder pro obrázek */}
-      <div className='block w-full h-60 bg-gray-700' />
+      <Image src={props.img} alt={props.title} width={200} height={100} className='w-full h-50 object-cover'/>
       
       {/* Placeholder pro obsah */}
       <div className="p-4 flex flex-col">

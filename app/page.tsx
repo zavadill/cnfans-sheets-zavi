@@ -20,10 +20,11 @@ export const marqueeList: string[] = [
 ];
  
 
+
 export default function Home() {
 
   return (
-    <main className=" text-white">
+    <main className="text-white">
       <header className=" flex h-screen justify-center items-center relative px-5 sm:px-0">
         <div className="text-center text-5xl ">
           <h1 className="text-7xl font-bold">Best CnFans Finds</h1>
@@ -95,12 +96,7 @@ export default function Home() {
         <div className='max-w-7xl mx-auto space-y-5'>
           <h3 className='text-5xl'>Best finds</h3>
           <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-            <Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/>
-            <Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/>
-            <Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/>
-            <Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/>
-            <Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/>
-            <Grid title='Jordan 4 x Travis scott'  img='sdsd' price='150' href='linkkkk'/>
+
           </div>
         </div>
       </div>

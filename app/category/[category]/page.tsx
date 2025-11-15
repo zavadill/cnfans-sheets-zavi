@@ -3,6 +3,7 @@ import React from "react";
 import Grid from "@/app/components/Grid";
 import SearchBar from "@/app/components/Search";
 import Link from "next/link";
+import { products } from "@/lib/data";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -13,16 +14,9 @@ type CategoryPageProps = {
   }>;
 };
 
-const nazvySouboru = [
-  'open1326912390-1234478995-09ce0000019874a9caf60aa043f9_1242_1071.jpg',
-  'open1326912390-1234478995-09e00000019874a9db5f0aa043f9_1242_1055.jpg',
-  'open1326912390-1234478995-09ce0000019874a9caf60aa043f9_1242_1071.jpg',
-  'open1326912390-1234478995-09e00000019874a9db5f0aa043f9_1242_1055.jpg',
-  'open1326912390-1234478995-09ce0000019874a9caf60aa043f9_1242_1071.jpg',
-  'open1326912390-1234478995-09e00000019874a9db5f0aa043f9_1242_1055.jpg',
-  'open1326912390-1234478995-09ce0000019874a9caf60aa043f9_1242_1071.jpg',
-  'open1326912390-1234478995-09e00000019874a9db5f0aa043f9_1242_1055.jpg',
-];
+
+
+
 
 export default function CategoryPage({ params, searchParams }: CategoryPageProps) {
 
@@ -33,6 +27,21 @@ export default function CategoryPage({ params, searchParams }: CategoryPageProps
   // Teď můžeme bezpečně číst data
   const kategoryNazev = resolvedParams.category;
   const searchQuery = resolvedSearchParams.q;
+
+  let filtrovaneProdukty = products;
+
+  filtrovaneProdukty = filtrovaneProdukty.filter(
+    (product) => product.category === kategoryNazev
+  );
+
+
+  if (searchQuery) {
+    filtrovaneProdukty = filtrovaneProdukty.filter(
+      (product) => 
+        product.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
+
 
   return (
     <div className="bg-[#121212] text-white/90 min-h-screen pt-25">
@@ -47,9 +56,23 @@ export default function CategoryPage({ params, searchParams }: CategoryPageProps
         )}
         
         <div className='max-w-7xl mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-          {nazvySouboru.map((item, id) => (
-            <Grid title={"item"} key={id} price={"item"} img={item} href={"/products/sdsdsdsdsd"} />
-          ))}
+          {filtrovaneProdukty.length > 0 ? (
+            // Pokud jsme něco našli, vylistujeme to
+            filtrovaneProdukty.map((product) => (
+              <Grid 
+                key={product.id} 
+                title={product.title} 
+                price={product.price} 
+                img={product.url} // Ujisti se, že 'Grid' přijímá 'img'
+                href={product.id} 
+              />
+        	  ))
+          ) : (
+            // Pokud jsme nic nenašli
+            <p className="text-white/50 col-span-full text-center text-lg">
+              Bohužel, nic nebylo nalezeno.
+            </p>
+          )}
         </div>
 
       </main>
