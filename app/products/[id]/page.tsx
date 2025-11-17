@@ -39,10 +39,9 @@ export default function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div className='min-h-screen bg-blue-950/40 flex justify-center items-center text-white'>
-      <div className='flex flex-col-reverse pt-30 sm:flex-row items-center gap-20'>
+      <div className='flex flex-col-reverse pt-30 sm:flex-row items-center gap-20 pb-20'>
         <div className='gap-5 flex flex-col'>
           <Image src={product.url} alt={product.title}  height={200} width={400} className='w-90 h-auto'/>
-          <div className='w-90 h-50 bg-gray-600'/>
         </div>
         <div className='text-center text-2xl space-y-5'>
           <h1 className='text-5xl'>{product.title}</h1>

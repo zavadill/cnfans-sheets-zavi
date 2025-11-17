@@ -18,6 +18,7 @@ type CategoryPageProps = {
 
 
 
+
 export default function CategoryPage({ params, searchParams }: CategoryPageProps) {
 
   // "Rozbalíme" Promise pomocí React.use()
@@ -28,6 +29,7 @@ export default function CategoryPage({ params, searchParams }: CategoryPageProps
   const kategoryNazev = resolvedParams.category;
   const searchQuery = resolvedSearchParams.q;
 
+ 
   let filtrovaneProdukty = products;
 
   filtrovaneProdukty = filtrovaneProdukty.filter(
@@ -70,7 +72,7 @@ export default function CategoryPage({ params, searchParams }: CategoryPageProps
           ) : (
             // Pokud jsme nic nenašli
             <p className="text-white/50 col-span-full text-center text-lg">
-              Bohužel, nic nebylo nalezeno.
+              Sorry, this catgory doesnt exist.
             </p>
           )}
         </div>
