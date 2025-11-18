@@ -108,7 +108,7 @@ const NavBar = () => {
         <Link href={"/"} className='text-xl font-bold'>TheVault</Link>
 
         {/* Desktopové odkazy */}
-        <div className=' flex-row items-center gap-5 hidden sm:flex'>
+        <div className=' flex-row items-center gap-5 hidden xl:flex'>
           {navigationLinks.map((product, id) => (
             <Link
               key={id}
@@ -123,13 +123,13 @@ const NavBar = () => {
         {/* Desktopové Sign Up tlačítko */}
         <Link
           href={"https://cnfans.com/register?ref=1507752"}
-          className='hidden sm:block bg-blue-600/70 px-3 py-1.5 rounded-md text-sm font-semibold transition-colors'
+          className='hidden xl:block bg-blue-600/70 px-3 py-1.5 rounded-md text-sm font-semibold transition-colors'
         >
           Sign Up to CnFans
         </Link>
 
         {/* Tlačítko pro otevření mobilního menu */}
-        <Menu className='block sm:hidden' onClick={handleClick} />
+        <Menu className='block xl:hidden' onClick={handleClick} />
       </div>
     </nav>
   )

@@ -72,7 +72,7 @@ export default function CategoryPage({ params, searchParams }: CategoryPageProps
           ) : (
             // Pokud jsme nic nenašli
             <p className="text-white/50 col-span-full text-center text-lg">
-              Sorry, this catgory doesnt exist.
+              Sorry, this does not exist.
             </p>
           )}
         </div>

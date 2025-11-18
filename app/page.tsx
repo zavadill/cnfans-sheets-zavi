@@ -96,7 +96,12 @@ export default function Home() {
         <div className='max-w-7xl mx-auto space-y-5'>
           <h3 className='text-5xl'>Best finds</h3>
           <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-
+            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
+            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
+            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
+            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
+            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
+            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
           </div>
         </div>
       </div>
