@@ -3,9 +3,9 @@
 // 1. Musíme importovat React, abychom mohli použít 'use'
 import Link from 'next/link';
 import React from 'react';
-import { products } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import { supabase } from '@/lib/supabase';
 // 2. Upravíme typ: 'params' je 'Promise'
 type ProductPageProps = {
   params: Promise<{
@@ -15,22 +15,24 @@ type ProductPageProps = {
 
 
 // 3. Funkce NENÍ 'async'
-export default function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
   
   // 4. TADY POUŽIJEME React.use() pro "rozbalení" Promise
-  const resolvedParams = React.use(params);
-  
-  // 5. Teď můžeme bezpečně přistoupit k 'id'
+  const resolvedParams = await params;
   const productId = resolvedParams.id;
 
+  // --- 3. SUPABASE LOGIKA ---
+  // "Najdi v tabulce 'products' řádek, kde se 'id' rovná 'productId' a vrať jeden výsledek"
+  const { data: product, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('id', productId)
+    .single(); // .single() je důležité, vrátí objekt {}, ne pole []
 
-
-  const product = products.find(p => p.id === productId);
-
-  if (!product) {
-    // Pokud 'product' je 'undefined' (nenašel se),
-    // Next.js zastaví renderování a zobrazí 404 stránku (not-found.tsx)
-    notFound()
+  // 4. Kontrola chyb
+  if (error || !product) {
+    // Pokud je chyba (např. špatné ID, výpadek) nebo produkt neexistuje -> 404
+    notFound();
   }
 
 
@@ -39,9 +41,9 @@ export default function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div className='min-h-screen bg-blue-950/40 flex justify-center items-center text-white'>
-      <div className='flex flex-col-reverse pt-30 sm:flex-row items-center gap-20 pb-20'>
+      <div className='flex flex-col-reverse pt-30 sm:flex-row items-center gap-20 pb-20 max-w-5xl mx-auto'>
         <div className='gap-5 flex flex-col'>
-          <Image src={product.url} alt={product.title}  height={200} width={400} className='w-90 h-auto'/>
+          <Image src={`/productsImage/${product.url}`} alt={product.title}  height={200} width={400} className='w-90 h-auto'/>
         </div>
         <div className='text-center text-2xl space-y-5'>
           <h1 className='text-5xl'>{product.title}</h1>

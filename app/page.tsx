@@ -5,6 +5,9 @@ import { Canvas } from '@react-three/fiber';
 import ModelScene from './components/Model';
 import Grid from './components/Grid';
 import Marquee from 'react-fast-marquee';
+import Win from './components/Win';
+import BestFinds from './components/BestFinds';
+import Fix from './components/Fix';
 
 export const marqueeList: string[] = [
   "Best QC Photos",
@@ -38,72 +41,13 @@ export default function Home() {
             <p className=' px-4 sm:px-8' key={item}>{item}</p>
           ))}
         </Marquee>
-        <div className='max-w-7xl mx-auto space-y-5'>
-          <h3 className='text-5xl'>Best Brands</h3>
-          <div className=' gap-5 flex flex-col sm:flex-row text-2xl'>
-            <div className='relative w-full rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105'>
-              <div className='block h-50  bg-linear-to-br from-[#121212] via-purple-950 to-blue-950'/>
-              <p className='absolute left-5 font-bold bottom-2'>NIKE</p>
-            </div>
-            <div className='relative w-full rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105'>
-              <div className='block h-50  bg-linear-to-br from-[#121212] via-purple-950 to-blue-950'/>
-              <p className='absolute left-5 font-bold bottom-2'>CORTEIZ</p>
-            </div>
-            <div className='relative w-full rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105'>
-              <div className='block h-50  bg-linear-to-br from-[#121212] via-purple-950 to-blue-950'/>
-              <p className='absolute left-5 font-bold bottom-2'>TRAPSTAR</p>
-            </div>
-            <div className='relative w-full rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105'>
-              <div className='block h-50  bg-linear-to-br from-[#121212] via-purple-950 to-blue-950'/>
-              <p className='absolute left-5 font-bold bottom-2'>LOUIS VUITTON</p>
-            </div>
-          </div>
-        </div>
-        {/* === SEKCE PRO NAHLÁŠENÍ PROBLÉMU === */}
-        <div className='max-w-7xl mx-auto space-y-5'>
-          <h3 className='text-5xl'>Link not working?</h3>
-          
-          {/* Tady je ten nový obsah */}
-          <div 
-            className="
-              bg-gray-800/50 
-              border border-gray-700 
-              rounded-lg 
-              p-8 
-              flex flex-col sm:flex-row 
-              justify-between 
-              items-center 
-              gap-6
-            "
-          >
-            <div>
-              <p className="text-2xl font-semibold text-white">
-                Found a broken link or need help?
-              </p>
-              <p className="text-white/60 mt-1">
-                Let us know! We will do our best to fix it or find what you're looking for.
-              </p>
-            </div>
-            
-            <a 
-              href="mailto:zavi@cnfanssheets.com" 
-              className="bg-blue-600/70 px-4 py-2 rounded-lg"
-            >
-              Contact Us
-            </a>
-          </div>
-        </div>
-        <div className='max-w-7xl mx-auto space-y-5'>
-          <h3 className='text-5xl'>Best finds</h3>
-          <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
-            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
-            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
-            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
-            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
-            <Grid title='Air Jordan 4 \"PSG\" (Paris Saint-Germain)' href='1' price='67.28' img='/productsImage/open1854382549-1234478995-4b660000019879712f4c0a8115c2_1242_1045_result.webp' />
-          </div>
-        </div>
+        <BestFinds />
+        <Marquee autoFill gradient gradientColor='#121212' className='max-w-7xl mx-auto text-xl sm:text-2xl'>
+          {marqueeList.map((item) => (
+            <p className=' px-4 sm:px-8' key={item}>{item}</p>
+          ))}
+        </Marquee>
+        <Fix />
       </div>
     </main>
   );

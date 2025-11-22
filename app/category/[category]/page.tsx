@@ -1,9 +1,8 @@
-
 import React from "react";
 import Grid from "@/app/components/Grid";
 import SearchBar from "@/app/components/Search";
 import Link from "next/link";
-import { products } from "@/lib/data";
+import { supabase } from "@/lib/supabase";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -14,34 +13,40 @@ type CategoryPageProps = {
   }>;
 };
 
+// 1. Funkce MUSÍ být 'async', abychom mohli volat databázi
+export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
 
+  // Rozbalení parametrů (v async funkci je lepší await než React.use)
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
 
-
-
-
-export default function CategoryPage({ params, searchParams }: CategoryPageProps) {
-
-  // "Rozbalíme" Promise pomocí React.use()
-  const resolvedParams = React.use(params);
-  const resolvedSearchParams = React.use(searchParams);
-
-  // Teď můžeme bezpečně číst data
   const kategoryNazev = resolvedParams.category;
   const searchQuery = resolvedSearchParams.q;
 
- 
-  let filtrovaneProdukty = products;
+  // --- 2. STAVÍME DOTAZ PRO SUPABASE ---
+  
+  // Začneme dotaz: "Chci tabulku products a sloupeček *"
+  let query = supabase
+    .from('products')
+    .select('*')
+    // Tady nahrazujeme tvůj JS .filter() za databázový filtr
+    .eq('category', kategoryNazev); 
 
-  filtrovaneProdukty = filtrovaneProdukty.filter(
-    (product) => product.category === kategoryNazev
-  );
-
-
+  // 3. PŘIDÁNÍ FILTRU PRO VYHLEDÁVÁNÍ
   if (searchQuery) {
-    filtrovaneProdukty = filtrovaneProdukty.filter(
-      (product) => 
-        product.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    // Místo JS .includes() použijeme .ilike() (case-insensitive like)
+    // % okolo znamená "cokoliv před a cokoliv za"
+    query = query.ilike('title', `%${searchQuery}%`);
+  }
+
+  // 4. ODESLÁNÍ DOTAZU A ČEKÁNÍ NA DATA (await)
+  // Teprve teď se data stáhnou
+  const { data: filtrovaneProdukty, error } = await query;
+
+  // Ošetření chyby (pokud by DB nejela)
+  if (error) {
+    console.error("Chyba DB:", error);
+    return <div className="text-white pt-32 text-center">Chyba při načítání dat.</div>;
   }
 
 
@@ -50,28 +55,32 @@ export default function CategoryPage({ params, searchParams }: CategoryPageProps
       <main className="max-w-7xl mx-auto px-4">
 
         <div className="flex flex-row justify-between items-center gap-5">
-          <Link href={`/category/${kategoryNazev}`}><h1 className="font-bold text-xl sm:text-4xl">{kategoryNazev}</h1></Link>
+          <Link href={`/category/${kategoryNazev}`}>
+            <h1 className="font-bold text-xl sm:text-4xl capitalize">{kategoryNazev}</h1>
+          </Link>
           <SearchBar />
         </div>
+
         {searchQuery && (
-          <p>Searching for: {searchQuery}</p>
+          <p className="text-white/50 mt-2">Searching for: "{searchQuery}"</p>
         )}
         
-        <div className='max-w-7xl mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-          {filtrovaneProdukty.length > 0 ? (
-            // Pokud jsme něco našli, vylistujeme to
-            filtrovaneProdukty.map((product) => (
-              <Grid 
+        <div className='max-w-7xl mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6'>
+          
+          {/* 5. KONTROLA A VÝPIS DAT */}
+          {filtrovaneProdukty && filtrovaneProdukty.length > 0 ? (
+            filtrovaneProdukty.map((product) => (
+              <Grid 
                 key={product.id} 
                 title={product.title} 
                 price={product.price} 
-                img={product.url} // Ujisti se, že 'Grid' přijímá 'img'
+                // Pozor: Ujisti se, že se sloupec v DB jmenuje 'url'
+                img={product.url} 
                 href={product.id} 
               />
-        	  ))
-          ) : (
-            // Pokud jsme nic nenašli
-            <p className="text-white/50 col-span-full text-center text-lg">
+            ))
+          ) : (
+            <p className="text-white/50 col-span-full text-center text-lg mt-10">
               Sorry, this does not exist.
             </p>
           )}
