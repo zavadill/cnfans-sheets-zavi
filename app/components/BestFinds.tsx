@@ -24,7 +24,7 @@ const BestFinds = async () => { // 1. Komponenta musí být 'async'
   return (
     <div className='max-w-7xl mx-auto space-y-5'>
       <h3 className='text-5xl'>Best finds</h3>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+      <div className='mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6'>
         
         {/* 3. Mapujeme přes data z databáze */}
         {products.map((product) => (
