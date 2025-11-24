@@ -40,14 +40,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 
   return (
-    <div className='min-h-screen bg-blue-950/40 flex justify-center items-center text-white'>
+    <div className='min-h-screen bg-[#121212] flex justify-center items-center text-white'>
       <div className='flex flex-col-reverse pt-30 sm:flex-row items-center gap-20 pb-20 max-w-5xl mx-auto'>
         <div className='gap-5 flex flex-col flex-1'>
-          <Image src={`/productsImage/${product.url}`} alt={product.title}  height={200} width={400} className='w-90 h-auto'/>
+          <Image src={`/productsImage/${product.url}`} alt={product.title}  height={200} width={400} className='w-90 h-auto rounded-2xl'/>
         </div>
         <div className='text-center text-2xl space-y-5 flex-1'>
           <h1 className='text-5xl'>{product.title}</h1>
-          <h2>$ {product.price}</h2>
+          <h2 className="">$ {product.price}</h2>
           <h3 className=''><Link href={product.aff} className='px-5 py-2 rounded-lg bg-blue-600/40 '>CnFans Link</Link></h3>
         </div>
       </div>
