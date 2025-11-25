@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     title: `${product.title} | TheVault Finds`, // Např. "Air Jordan 4 | Zavi Finds"
     description: `Buy ${product.title} for only $${product.price}. Best products and verified links on TheVault Finds.`,
     openGraph: {
-      title: product.title,
+      title: `${product.title} | TheVault Finds`,
       description: `Check out this find for $${product.price}`,
       images: [`/productsImage/${product.url}`], // Obrázek se ukáže při sdílení na Discordu/iMessage
     },
