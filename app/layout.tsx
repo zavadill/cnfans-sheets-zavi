@@ -7,10 +7,9 @@ import Footer from "./components/Footer";
 
 
 export const metadata: Metadata = {
-  title: 'TheVault - Best QC Photos & Links',
-  description: 'Discover the best items, shoes, hoodies, and accessories. QC photos, links, and the best prices all in one place.',
-  // Můžeš přidat i klíčová slova (i když Google je spíš ignoruje)
-  keywords: ['finds', 'qc photos', 'fashion', 'sneakers'],
+  title: 'TheVault - Best Finds with Links',
+  description: 'Discover the best items, shoes, hoodies, and accessories. Photos, links, and the best prices all in one place.',
+  keywords: ['finds', 'qc photos', 'fashion', 'sneakers', 'cnfans', 'links', 'TheVault', 'spreadsheet'],
 };
 
 export default function RootLayout({

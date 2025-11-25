@@ -5,7 +5,7 @@ import Grid from './Grid'
 import { supabase } from '@/lib/supabase' // Importujeme klienta
 
 // Tvoje vybrané IDčka produktů, které chceš zobrazit
-const ids = [25, 225, 125, 207, 266, 276] 
+const ids = [25, 225, 125, 266, 276] 
 
 const BestFinds = async () => { // 1. Komponenta musí být 'async'
   

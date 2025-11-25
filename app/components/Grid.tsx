@@ -40,7 +40,7 @@ const Grid = (props: Props) => {
         </p>
         
         {/* 3. Kontejner pro cenu - přidáno 'mt-auto' (zarovná na spodek) */}
-        <div className="flex justify-between items-end mt-auto pt-2">
+        <div className="flex justify-between items-center mt-auto pt-2">
           <span className="text-xs text-white/40 uppercase tracking-wider font-semibold">
             CNFans
           </span>
