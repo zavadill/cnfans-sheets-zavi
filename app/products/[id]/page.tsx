@@ -6,12 +6,47 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { supabase } from '@/lib/supabase';
+import { Metadata } from 'next';
 // 2. Upravíme typ: 'params' je 'Promise'
 type ProductPageProps = {
   params: Promise<{
     id: string; // Jméno 'id' se musí shodovat se složkou [id]
   }>
 };
+
+
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  // Musíme si 'id' vytáhnout stejně jako dole
+  const resolvedParams = await params;
+  const productId = resolvedParams.id;
+
+  // Stáhneme data o produktu (Next.js tento dotaz automaticky deduplikuje, 
+  // takže se databáze neptá 2x, i když to vypadá, že ano)
+  const { data: product } = await supabase
+    .from('products')
+    .select('title, price, url') // Stačí nám jen pár políček pro SEO
+    .eq('id', productId)
+    .single();
+
+  // Pokud produkt neexistuje, vrátíme základní metadata
+  if (!product) {
+    return {
+      title: 'Product Not Found | TheVault Finds',
+    };
+  }
+
+  // Vrátíme dynamická metadata
+  return {
+    title: `${product.title} | TheVault Finds`, // Např. "Air Jordan 4 | Zavi Finds"
+    description: `Buy ${product.title} for only $${product.price}. Best products and verified links on TheVault Finds.`,
+    openGraph: {
+      title: product.title,
+      description: `Check out this find for $${product.price}`,
+      images: [`/productsImage/${product.url}`], // Obrázek se ukáže při sdílení na Discordu/iMessage
+    },
+  };
+}
+
 
 
 // 3. Funkce NENÍ 'async'
