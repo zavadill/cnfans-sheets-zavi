@@ -10,7 +10,6 @@ import BestFinds from './components/BestFinds';
 import Fix from './components/Fix';
 
 export const marqueeList: string[] = [
-  "Best QC Photos",
   "Jordan 4",
   "Get Shipping Coupons",
   "Trapstar",
