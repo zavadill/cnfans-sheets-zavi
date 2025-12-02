@@ -1,13 +1,9 @@
 "use client"
 
-// 1. Přidán useEffect
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react';
-// 2. Odstraněn import Zustandu
-// import { useNavStore } from '@/lib/store';
 
-// Typ a list odkazů (beze změny)
 export type NavLink = {
   title: string;
   href: string;
@@ -26,110 +22,106 @@ export const navigationLinks: NavLink[] = [
 ];
 
 const NavBar = () => {
-
-  // 3. Zpět na lokální useState
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => setIsOpen(!isOpen);
-
-  // 4. Stav a efekt pro scroll
   const [hasScrolled, setHasScrolled] = useState(false);
 
+  // --- OPRAVENÝ SCROLL EFFECT ---
   useEffect(() => {
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 10);
     };
+
+    // 1. Zavoláme to HNED při načtení (opravuje bug při refreshi)
+    handleScroll();
+
+    // 2. Přidáme posluchače pro další pohyb
     window.addEventListener('scroll', handleScroll);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  // ------------------------------
 
+  // Zámek scrollu při otevřeném menu
   useEffect(() => {
-    if (isOpen) {
-      // Když je menu otevřené, ZAMKNI scroll na <body>
-      document.body.style.overflow = 'hidden';
-    } else {
-      // Když je menu zavřené, POVOL scroll na <body>
-      document.body.style.overflow = 'auto';
-    }
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
-    // 3. "Úklidová" funkce
-    //    Tohle je pojistka: pokud se komponenta z nějakého důvodu odpojí,
-    //    vždy se ujistí, že scroll je zase povolený.
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOpen]); // <-- Tento efekt se spustí VŽDY, když se změní 'isOpen'
-  // ===================================
-
-  // 5. Opravená logika: if (isOpen) - zobrazí se mobilní menu
+  // Mobilní menu
   if (isOpen) {
     return (
-      // "Hezčí" pozadí s backdrop-blur
-      <nav className='fixed bg-black/70 backdrop-blur-lg h-screen w-full top-0 z-50 text-[--foreground] flex justify-center items-center text-center'>
-        <div className='flex flex-col gap-4 text-3xl'> {/* Snížen 'gap' pro lepší vzhled */}
-          {/* Logo i v mobilním menu */}
-
+      <nav className='fixed bg-black/90 backdrop-blur-xl h-screen w-full top-0 z-50 text-white flex justify-center items-center text-center'>
+        <div className='flex flex-col gap-6 text-2xl font-medium'>
           {navigationLinks.map((product, id) => (
             <Link
-              className='text-white/70 hover:text-white transition-colors'
+              className='text-white/80 hover:text-white transition-colors duration-200'
               key={id}
               href={product.href}
-              onClick={handleClick} // Zavře menu po kliknutí
+              onClick={handleClick}
             >
               {product.title}
             </Link>
           ))}
 
-          {/* Sign Up tlačítko pro mobilní menu */}
           <Link
             href={"https://cnfans.com/register?ref=1507752"}
-            className='mt-8 bg-blue-600/70 text-black px-4 py-2 rounded-md text-xl font-semibold'
-            onClick={handleClick} // Zavře menu
+            className='mt-6 bg-blue-600 text-white px-6 py-3 rounded-xl text-lg font-bold hover:bg-blue-500 transition-all'
+            onClick={handleClick}
           >
             Sign Up to CnFans
           </Link>
         </div>
-        {/* Tlačítko pro zavření */}
-        <X className='absolute top-6 right-5 text-white' onClick={handleClick} />
+        <X className='absolute top-6 right-6 text-white/80 cursor-pointer hover:text-white' size={32} onClick={handleClick} />
       </nav>
     )
   }
 
-  // 6. Výchozí (desktopový) navbar
+  // Desktop / Default Navbar
   return (
-    // Dynamické pozadí podle scrollu
     <nav className={`
-        h-20 fixed w-full text-white flex items-center px-5 sm:px-5 z-40 
-        transition-all duration-300 ease-in-out
-        ${hasScrolled ? 'bg-black/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'}
+        h-20 fixed w-full text-white flex items-center px-6 z-40 
+        transition-all duration-300 ease-in-out border-b border-transparent
+        ${hasScrolled ? 'bg-[#0a0a0a]/80 backdrop-blur-md shadow-lg border-white/5' : 'bg-transparent'}
     `}>
-      <div className='flex flex-row items-center justify-between w-full'>
-        <Link href={"/"} className='text-xl font-bold'>TheVault</Link>
+      <div className='flex flex-row items-center justify-between w-full max-w-7xl mx-auto'>
+        <Link href={"/"} className='text-2xl font-extrabold tracking-tight'>
+          TheVault
+        </Link>
 
-        {/* Desktopové odkazy */}
-        <div className=' flex-row items-center gap-5 hidden xl:flex'>
+        {/* Desktop Links */}
+        <div className='flex-row items-center gap-6 hidden xl:flex'>
           {navigationLinks.map((product, id) => (
             <Link
               key={id}
               href={product.href}
-              className='text-white/70 hover:text-white transition-colors'
+              className='text-sm font-medium text-white/70 hover:text-white transition-colors'
             >
               {product.title}
             </Link>
           ))}
         </div>
 
-        {/* Desktopové Sign Up tlačítko */}
-        <Link
-          href={"https://cnfans.com/register?ref=1507752"}
-          className='hidden xl:block bg-blue-600/70 px-3 py-1.5 rounded-md text-sm font-semibold transition-colors'
-        >
-          Sign Up to CnFans
-        </Link>
+        {/* Desktop CTA */}
+        <div className="flex items-center gap-4">
+            <Link
+            href={"https://cnfans.com/register?ref=1507752"}
+            className='hidden xl:block bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-blue-900/20'
+            >
+            Sign Up
+            </Link>
 
-        {/* Tlačítko pro otevření mobilního menu */}
-        <Menu className='block xl:hidden' onClick={handleClick} />
+            {/* Mobile Menu Trigger */}
+            <Menu className='block xl:hidden cursor-pointer text-white/90 hover:text-white' size={28} onClick={handleClick} />
+        </div>
       </div>
     </nav>
   )

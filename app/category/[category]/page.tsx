@@ -13,6 +13,8 @@ type CategoryPageProps = {
   }>;
 };
 
+export const revalidate = 60;
+
 // 1. Funkce MUSÍ být 'async', abychom mohli volat databázi
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
 
@@ -74,7 +76,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 key={product.id} 
                 title={product.title} 
                 price={product.price} 
-                // Pozor: Ujisti se, že se sloupec v DB jmenuje 'url'
                 img={product.url} 
                 href={product.id} 
               />

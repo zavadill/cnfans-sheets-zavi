@@ -72,9 +72,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
            <Image 
              src={`/productsImage/${product.url}`} 
              alt={product.title} 
-             width={600} 
-             height={600}
-             priority
+             width={1000} 
+             height={1000}
              className="w-full max-w-[500px] h-auto object-cover rounded-[2rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] bg-[#121212] border border-white/10 z-10"
            />
         </div>
