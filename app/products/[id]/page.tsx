@@ -1,91 +1,109 @@
 // app/products/[id]/page.tsx
-
-// 1. Musíme importovat React, abychom mohli použít 'use'
-import Link from 'next/link';
 import React from 'react';
-import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
-import { supabase } from '@/lib/supabase';
+import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-// 2. Upravíme typ: 'params' je 'Promise'
+import { supabase } from '@/lib/supabase';
+import { ExternalLink } from 'lucide-react';
+
 type ProductPageProps = {
-  params: Promise<{
-    id: string; // Jméno 'id' se musí shodovat se složkou [id]
-  }>
+  params: Promise<{
+    id: string;
+  }>
 };
 
-
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  // Musíme si 'id' vytáhnout stejně jako dole
-  const resolvedParams = await params;
-  const productId = resolvedParams.id;
-
-  // Stáhneme data o produktu (Next.js tento dotaz automaticky deduplikuje, 
-  // takže se databáze neptá 2x, i když to vypadá, že ano)
+async function getProduct(id: string) {
   const { data: product } = await supabase
     .from('products')
-    .select('title, price, url') // Stačí nám jen pár políček pro SEO
-    .eq('id', productId)
+    .select('*')
+    .eq('id', id)
     .single();
+  
+  return product;
+}
 
-  // Pokud produkt neexistuje, vrátíme základní metadata
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const product = await getProduct(resolvedParams.id);
+
   if (!product) {
     return {
       title: 'Product Not Found | TheVault Finds',
+      robots: { index: false, follow: false },
     };
   }
 
-  // Vrátíme dynamická metadata
   return {
-    title: `${product.title} | TheVault Finds`, // Např. "Air Jordan 4 | Zavi Finds"
-    description: `Buy ${product.title} for only $${product.price}. Best products and verified links on TheVault Finds.`,
+    title: `${product.title} | TheVault Finds`,
     openGraph: {
       title: `${product.title} | TheVault Finds`,
-      description: `Check out this find for $${product.price}`,
-      images: [`/productsImage/${product.url}`], // Obrázek se ukáže při sdílení na Discordu/iMessage
+      images: [
+        {
+          url: `/productsImage/${product.url}`,
+          width: 800,
+          height: 600,
+          alt: product.title,
+        },
+      ],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.title}`,
+      images: [`/productsImage/${product.url}`],
     },
   };
 }
 
-
-
-// 3. Funkce NENÍ 'async'
 export default async function ProductPage({ params }: ProductPageProps) {
-  
-  // 4. TADY POUŽIJEME React.use() pro "rozbalení" Promise
-  const resolvedParams = await params;
-  const productId = resolvedParams.id;
+  const resolvedParams = await params;
+  const product = await getProduct(resolvedParams.id);
 
-  // --- 3. SUPABASE LOGIKA ---
-  // "Najdi v tabulce 'products' řádek, kde se 'id' rovná 'productId' a vrať jeden výsledek"
-  const { data: product, error } = await supabase
-    .from('products')
-    .select('*')
-    .eq('id', productId)
-    .single(); // .single() je důležité, vrátí objekt {}, ne pole []
+  if (!product) {
+    notFound();
+  }
 
-  // 4. Kontrola chyb
-  if (error || !product) {
-    // Pokud je chyba (např. špatné ID, výpadek) nebo produkt neexistuje -> 404
-    notFound();
-  }
-
-
-
-
-
-  return (
-    <div className='min-h-screen bg-[#121212] flex justify-center items-center text-white'>
-      <div className='flex flex-col-reverse pt-30 sm:flex-row items-center gap-20 pb-20 max-w-5xl mx-auto'>
-        <div className='gap-5 flex flex-col flex-1'>
-          <Image src={`/productsImage/${product.url}`} alt={product.title}  height={200} width={400} className='w-90 h-auto rounded-2xl'/>
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center p-6 lg:p-12">
+      <div className="max-w-5xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        
+        <div className="flex justify-center w-full h-full relative p-4">
+           <Image 
+             src={`/productsImage/${product.url}`} 
+             alt={product.title} 
+             width={600} 
+             height={600}
+             priority
+             className="w-full max-w-[500px] h-auto object-cover rounded-[2rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] bg-[#121212] border border-white/10 z-10"
+           />
         </div>
-        <div className='text-center text-2xl space-y-5 flex-1'>
-          <h1 className='text-5xl'>{product.title}</h1>
-          <h2 className="">$ {product.price}</h2>
-          <h3 className=''><Link href={product.aff} className='px-5 py-2 rounded-lg bg-blue-600/40 '>CnFans Link</Link></h3>
+
+        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8">
+          <div>
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+              {product.title}
+            </h1>
+          </div>
+
+          <div className="text-5xl font-semibold text-white/90">
+            $ {product.price} <span className="text-xl text-white/50 font-normal">USD</span>
+          </div>
+
+          <div className="pt-2 w-full md:w-auto">
+            <Link 
+              href={product.aff} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group w-full md:w-auto inline-flex items-center justify-center px-8 py-4 text-xl font-bold text-white transition-all duration-300 bg-blue-600 hover:bg-blue-700 rounded-2xl hover:shadow-xl hover:shadow-blue-900/20 hover:-translate-y-0.5"
+            >
+              Buy on CnFans
+              <ExternalLink size={22} className="ml-3 text-white/80 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </Link>
+          </div>
         </div>
+
       </div>
     </div>
-  )
+  );
 }

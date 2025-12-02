@@ -46,12 +46,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Ošetření chyby (pokud by DB nejela)
   if (error) {
     console.error("Chyba DB:", error);
-    return <div className="text-white pt-32 text-center">Chyba při načítání dat.</div>;
+    return <div className="flex w-full pt-20 h-screen justify-center items-center">Loading...</div>;
   }
 
 
   return (
-    <div className="bg-[#121212] text-white/90 min-h-screen pt-25">
+    <div className="bg-[#121212] text-white/90 min-h-screen pt-25 pb">
       <main className="max-w-7xl mx-auto px-4">
 
         <div className="flex flex-row justify-between items-center gap-5">
