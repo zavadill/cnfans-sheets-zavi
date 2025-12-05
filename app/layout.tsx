@@ -8,9 +8,38 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 
 export const metadata: Metadata = {
-  title: 'TheVault - Best Finds with Links',
+  metadataBase: new URL(baseUrl), // Důležité pro relativní cesty k obrázkům
+  title: {
+    default: 'TheVault - Best Finds with Links',
+    template: '%s | TheVault'
+  },
   description: 'Discover the best items, shoes, hoodies, and accessories. Photos, links, and the best prices all in one place.',
   keywords: ['finds', 'qc photos', 'fashion', 'sneakers', 'cnfans', 'links', 'TheVault', 'spreadsheet'],
+  
+  // --- ZDE JE OG IMAGE NASTAVENÍ ---
+  openGraph: {
+    title: 'TheVault - Best Finds with Links',
+    description: 'Discover the best items, shoes, hoodies, and accessories.',
+    url: 'https://thevaultfinds.com', // Tvoje doména
+    siteName: 'TheVault',
+    images: [
+      {
+        url: '/og.avifg', // Cesta k obrázku ve složce public
+        width: 1200,
+        height: 630,
+        alt: 'TheVault Preview Image',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  // Nastavení pro Twitter (X)
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TheVault - Best Finds with Links',
+    description: 'Discover the best items, shoes, hoodies, and accessories.',
+    images: ['/og.avif'], // Stejná cesta
+  },
 };
 
 export default function RootLayout({
