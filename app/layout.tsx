@@ -8,37 +8,43 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl), // Důležité pro relativní cesty k obrázkům
+  // Základní SEO
   title: {
     default: 'TheVault - Best Finds with Links',
-    template: '%s | TheVault'
+    template: '%s | TheVault' // Např. "Shoes | TheVault"
   },
-  description: 'Discover the best items, shoes, hoodies, and accessories. Photos, links, and the best prices all in one place.',
-  keywords: ['finds', 'qc photos', 'fashion', 'sneakers', 'cnfans', 'links', 'TheVault', 'spreadsheet'],
+  description: 'Discover the best items, shoes, hoodies, and accessories. Verified QC photos, links, and the best prices all in one place.',
   
-  // --- ZDE JE OG IMAGE NASTAVENÍ ---
+  // Klíčová slova pro vyhledávače
+  keywords: ['cnfans', 'spreadsheet', 'finds', 'reps', 'fashion', 'jordan', 'nike', 'best finds'],
+  
+  // Autoři
+  authors: [{ name: 'Zavi' }],
+  
+  // OpenGraph (Facebook, Discord, iMessage)
   openGraph: {
     title: 'TheVault - Best Finds with Links',
     description: 'Discover the best items, shoes, hoodies, and accessories.',
-    url: 'https://thevaultfinds.com', // Tvoje doména
-    siteName: 'TheVault',
+    url: 'https://thevaultfinds.com',
+    siteName: 'TheVault Finds',
     images: [
       {
-        url: '/og.avifg', // Cesta k obrázku ve složce public
+        url: '/opengraph-image.png', // Automaticky se načte z public/ nebo app/
         width: 1200,
         height: 630,
-        alt: 'TheVault Preview Image',
+        alt: 'TheVault Preview',
       },
     ],
     locale: 'en_US',
     type: 'website',
   },
-  // Nastavení pro Twitter (X)
+
+  // Twitter Card (X) - důležité pro velký náhled
   twitter: {
     card: 'summary_large_image',
-    title: 'TheVault - Best Finds with Links',
-    description: 'Discover the best items, shoes, hoodies, and accessories.',
-    images: ['/og.avif'], // Stejná cesta
+    title: 'TheVault - Best Finds',
+    description: 'Discover the best items, shoes, and accessories.',
+    images: ['/og.avif'],
   },
 };
 
