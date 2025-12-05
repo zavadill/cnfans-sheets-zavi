@@ -29,15 +29,15 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
   if (!product) {
     return {
-      title: 'Product Not Found | TheVault Finds',
+      title: 'Product Not Found',
       robots: { index: false, follow: false },
     };
   }
 
   return {
-    title: `${product.title} | TheVault Finds`,
+    title: `${product.title}`,
     openGraph: {
-      title: `${product.title} | TheVault Finds`,
+      title: `${product.title}`,
       images: [
         {
           url: `/productsImage/${product.url}`,

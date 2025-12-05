@@ -47,7 +47,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   // Ošetření chyby (pokud by DB nejela)
   if (error) {
-    console.error("Chyba DB:", error);
     return <div className="flex w-full pt-20 h-screen justify-center items-center">Loading...</div>;
   }
 

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: 'Discover the best items, shoes, hoodies, and accessories. Verified QC photos, links, and the best prices all in one place.',
   
   // Klíčová slova pro vyhledávače
-  keywords: ['cnfans', 'spreadsheet', 'finds', 'reps', 'fashion', 'jordan', 'nike', 'best finds'],
+  keywords: ['cnfans', 'spreadsheet', 'finds', 'fashion', 'jordan', 'nike', 'best finds'],
   
   // Autoři
   authors: [{ name: 'Zavi' }],
