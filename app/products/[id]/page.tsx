@@ -66,7 +66,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center p-6 lg:p-12">
-      <div className="max-w-5xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="max-w-5xl pt-15 w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
         
         <div className="flex justify-center w-full h-full relative p-4">
            <Image 

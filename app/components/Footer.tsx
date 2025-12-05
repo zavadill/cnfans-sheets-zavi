@@ -46,7 +46,7 @@ const Footer = () => {
         {/* --- 4. SEKCE: LEGAL (Disclaimer) --- */}
         <div className="border-t border-white/10 pt-8 text-justify space-y-3 text-[10px] leading-relaxed opacity-60">
             <p>
-              © {currentYear} cnfanssheetszavi.com. All rights reserved.
+              © {currentYear} thevaultfinds.com. All rights reserved.
             </p>
             <p>
               cnfanssheetszavi.com is an independent platform and is not affiliated with or endorsed by the CNFans.com website or brand. The primary function of our website is to facilitate the discovery of products available on the CNFans website. This website is intended exclusively for private users and does not operate as a marketplace.

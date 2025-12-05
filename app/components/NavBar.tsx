@@ -116,7 +116,7 @@ const NavBar = () => {
             href={"https://cnfans.com/register?ref=1507752"}
             className='hidden xl:block bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-blue-900/20'
             >
-            Sign Up
+            Sign Up To CnFans
             </Link>
 
             {/* Mobile Menu Trigger */}

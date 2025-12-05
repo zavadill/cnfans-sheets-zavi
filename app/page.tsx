@@ -8,6 +8,7 @@ import Marquee from 'react-fast-marquee';
 import Win from './components/Win';
 import BestFinds from './components/BestFinds';
 import Fix from './components/Fix';
+import EventLog from './components/EventLog';
 
 export const marqueeList: string[] = [
   "Jordan 4",
@@ -41,11 +42,7 @@ export default function Home() {
           ))}
         </Marquee>
         <BestFinds />
-        <Marquee autoFill gradient gradientColor='#121212' className='max-w-7xl mx-auto text-xl sm:text-2xl'>
-          {marqueeList.map((item) => (
-            <p className=' px-4 sm:px-8' key={item}>{item}</p>
-          ))}
-        </Marquee>
+        <EventLog />
         <Fix />
       </div>
     </main>
