@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: 'TheVault Finds',
     images: [
       {
-        url: '/opengraph-image.png', // Automaticky se načte z public/ nebo app/
+        url: '/og.avif', // Automaticky se načte z public/ nebo app/
         width: 1200,
         height: 630,
         alt: 'TheVault Preview',
