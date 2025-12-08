@@ -19,9 +19,6 @@ export const metadata: Metadata = {
   // Klíčová slova pro vyhledávače
   keywords: ['cnfans', 'spreadsheet', 'finds', 'fashion', 'jordan', 'nike', 'best finds'],
   
-  // Autoři
-  authors: [{ name: 'Zavi' }],
-  
   // OpenGraph (Facebook, Discord, iMessage)
   openGraph: {
     title: 'TheVault - Best Finds with Links',
