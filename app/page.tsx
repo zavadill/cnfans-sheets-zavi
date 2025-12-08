@@ -9,6 +9,7 @@ import Win from './components/Win';
 import BestFinds from './components/BestFinds';
 import Fix from './components/Fix';
 import EventLog from './components/EventLog';
+import Gg from './components/Gg';
 
 export const marqueeList: string[] = [
   "Jordan 4",
@@ -36,6 +37,7 @@ export default function Home() {
         <ModelScene />
       </header>
       <div className='bg-[#121212] py-20 px-5 space-y-30'>
+        <Gg />
         <Marquee autoFill gradient gradientColor='#121212' className='max-w-7xl mx-auto text-xl sm:text-2xl'>
           {marqueeList.map((item) => (
             <p className=' px-4 sm:px-8' key={item}>{item}</p>

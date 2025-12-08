@@ -72,7 +72,7 @@ const SceneContent = () => {
 // Teď už jen obsahuje Canvas a v něm SceneContent
 const ModelScene = () => {
   return (
-    <div className="absolute top-0 left-0 w-full h-full -z-10 bg-linear-to-br from-[#121212] via-purple-950 to-blue-950">
+    <div className="absolute top-0 left-0 w-full h-full -z-10 bg-linear-to-br from-[#121212] via-blue-950 to-[#121221]">
       <Canvas 
         camera={{ position: [0, 0, 10], fov: 50 }} 
         dpr={[1, 2]} 
