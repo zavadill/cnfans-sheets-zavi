@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     siteName: 'TheVault Finds',
     images: [
       {
-        url: '/ghgfhfghgfh.png', // Automaticky se načte z public/ nebo app/
-        width: 1200,
-        height: 1200,
+        url: '/og.png', // Automaticky se načte z public/ nebo app/
+        width: 400,
+        height: 250,
         alt: 'TheVault Preview',
       },
     ],
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'TheVault - Best Finds',
     description: 'Discover the best items, shoes, and accessories.',
-    images: ['/ghgfhfghgfh.png'],
+    images: ['/og.png'],
   },
 };
 
