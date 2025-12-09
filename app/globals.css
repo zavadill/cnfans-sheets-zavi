@@ -24,3 +24,16 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+::selection {
+  background-color: #008cff; /* Zde dej svou barvu (např. žlutá) */
+  color: #ffffff;            /* Barva textu uvnitř výběru (např. černá) */
+}
+
+/* Pro podporu starších prohlížečů (Firefox) */
+::-moz-selection {
+  background-color: #008cff;
+  color: #ffffff;
+}
