@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       {
         url: '/ghgfhfghgfh.png', // Automaticky se načte z public/ nebo app/
         width: 1200,
-        height: 630,
+        height: 1200,
         alt: 'TheVault Preview',
       },
     ],
