@@ -41,6 +41,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     query = query.ilike('title', `%${searchQuery}%`);
   }
 
+  query = query.order('title', { ascending: true });
+
+
   // 4. ODESLÁNÍ DOTAZU A ČEKÁNÍ NA DATA (await)
   // Teprve teď se data stáhnou
   const { data: filtrovaneProdukty, error } = await query;

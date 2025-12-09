@@ -10,6 +10,7 @@ import BestFinds from './components/BestFinds';
 import Fix from './components/Fix';
 import EventLog from './components/EventLog';
 import Gg from './components/Gg';
+import SuggestionBox from './components/Vote';
 
 export const marqueeList: string[] = [
   "Jordan 4",
@@ -46,6 +47,7 @@ export default function Home() {
         <BestFinds />
         <EventLog />
         <Fix />
+        <SuggestionBox />
       </div>
     </main>
   );
