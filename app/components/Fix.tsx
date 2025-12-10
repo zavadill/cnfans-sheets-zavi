@@ -3,7 +3,7 @@ import React from 'react'
 const Fix = () => {
   return (
     <div className='max-w-7xl mx-auto space-y-5'>
-          <h3 className='text-5xl'>Link not working?</h3>
+          <h3 className='text-5xl font-mono'>Link not working?</h3>
           
           {/* Tady je ten nový obsah */}
           <div 

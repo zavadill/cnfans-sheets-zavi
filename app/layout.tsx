@@ -8,6 +8,19 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next"
 
 
+const roboto = Roboto({
+  weight: ['400', '500', '700'], // Vyber tloušťky, které potřebuješ
+  subsets: ['latin'],
+  variable: '--font-roboto', // Důležité: Jméno CSS proměnné
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair', // Důležité: Jméno CSS proměnné
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   // Základní SEO
   title: {
@@ -46,6 +59,7 @@ export const metadata: Metadata = {
   },
 };
 
+
 export default function RootLayout({
 
 
@@ -56,7 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="relative">
+      <body className={`${roboto.variable} ${playfair.variable} relative font-sans antialiased`}>
         <NavBar />
         {children}
         <Footer />

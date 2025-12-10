@@ -7,7 +7,7 @@ import { supabase } from '@/lib/supabase'
 
 const BestFinds = async () => {
 
-  const ids = [2020, 2576, 2125, 2956, 2263] 
+  const ids = [1, 2, 3, 4, 5] 
   
   // Stáhneme data ze Supabase
   const { data: products, error } = await supabase
@@ -27,7 +27,7 @@ const BestFinds = async () => {
 
   return (
     <div className='max-w-7xl mx-auto space-y-5'>
-      <h3 className='text-5xl'>Best finds</h3>
+      <h3 className='text-5xl font-mono'>Best finds</h3>
       <div className='mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6'>
         
         {products.map((product) => (

@@ -29,10 +29,10 @@ export const marqueeList: string[] = [
 export default function Home() {
 
   return (
-    <main className="text-white">
-      <header className=" flex h-screen justify-center items-center relative px-5 sm:px-0">
+    <main className="text-white font-sans">
+      <header className=" flex h-screen justify-center items-center relative px-5 sm:px-0 ">
         <div className="text-center text-5xl ">
-          <h1 className="text-7xl font-bold">Best CnFans Finds</h1>
+          <h1 className="text-7xl font-bold font-mono">Best CnFans Finds</h1>
           <HeaderSlider />
         </div>
         <ModelScene />

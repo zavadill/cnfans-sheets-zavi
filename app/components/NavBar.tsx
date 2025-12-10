@@ -59,7 +59,7 @@ const NavBar = () => {
   // Mobilní menu
   if (isOpen) {
     return (
-      <nav className='fixed bg-black/90 backdrop-blur-xl h-screen w-full top-0 z-50 text-white flex justify-center items-center text-center'>
+      <nav className='fixed bg-black/90 backdrop-blur-xl h-screen w-full top-0 z-50 text-white flex justify-center items-center text-center font-sans'>
         <div className='flex flex-col gap-6 text-2xl font-medium'>
           {navigationLinks.map((product, id) => (
             <Link
@@ -74,7 +74,7 @@ const NavBar = () => {
 
           <Link
             href={"https://cnfans.com/register?ref=1507752"}
-            className='mt-6 bg-blue-600 text-white px-6 py-3 rounded-xl text-lg font-bold hover:bg-blue-500 transition-all'
+            className='mt-6 bg-blue-600 text-white px-6 py-3 rounded-xl text-lg font-bold hover:bg-blue-500 transition-all font-mono'
             onClick={handleClick}
           >
             Sign Up to CnFans
@@ -93,7 +93,7 @@ const NavBar = () => {
         ${hasScrolled ? 'bg-[#0a0a0a]/80 backdrop-blur-md shadow-lg border-white/5' : 'bg-transparent'}
     `}>
       <div className='flex flex-row items-center justify-between w-full max-w-7xl mx-auto'>
-        <Link href={"/"} className='text-2xl font-extrabold tracking-tight'>
+        <Link href={"/"} className='text-2xl font-extrabold tracking-tight font-mono'>
           TheVault
         </Link>
 
@@ -114,7 +114,7 @@ const NavBar = () => {
         <div className="flex items-center gap-4">
             <Link
             href={"https://cnfans.com/register?ref=1507752"}
-            className='hidden xl:block bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-blue-900/20'
+            className='hidden xl:block bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-blue-900/20 font-mono'
             >
             Sign Up To CnFans
             </Link>

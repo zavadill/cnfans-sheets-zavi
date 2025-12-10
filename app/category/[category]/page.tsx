@@ -55,7 +55,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
 
   return (
-    <div className="bg-[#121212] text-white/90 min-h-screen pt-25 pb">
+    <div className="bg-[#121212] text-white/90 min-h-screen pt-25 font-sans">
       <main className="max-w-7xl mx-auto px-4">
 
         <div className="flex flex-row justify-between items-center gap-5">
