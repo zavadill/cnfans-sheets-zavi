@@ -3,6 +3,7 @@ import Grid from "@/app/components/Grid";
 import SearchBar from "@/app/components/Search";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import { X } from "lucide-react"; // Import ikonky křížku
 
 type CategoryPageProps = {
   params: Promise<{
@@ -31,7 +32,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let query = supabase
     .from('products')
     .select('*')
-    // Tady nahrazujeme tvůj JS .filter() za databázový filtr
     .eq('category', kategoryNazev); 
 
   // 3. PŘIDÁNÍ FILTRU PRO VYHLEDÁVÁNÍ
@@ -62,7 +62,21 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           <Link href={`/category/${kategoryNazev}`}>
             <h1 className="font-bold text-xl sm:text-4xl capitalize">{kategoryNazev}</h1>
           </Link>
-          <SearchBar />
+          
+          {/* Změna: Wrapper pro SearchBar a Reset tlačítko */}
+          <div className="flex items-center gap-2">
+            {searchQuery && (
+              <Link 
+                href={`/category/${kategoryNazev}`}
+                className="group flex items-center gap-1 text-sm text-red-400 hover:text-red-300 transition-colors bg-white/5 px-3 py-2 rounded-lg border border-transparent hover:border-red-500/30"
+                title="Zrušit vyhledávání"
+              >
+                <X size={16} />
+                <span className="hidden sm:inline">Reset</span>
+              </Link>
+            )}
+            <SearchBar />
+          </div>
         </div>
 
         {searchQuery && (

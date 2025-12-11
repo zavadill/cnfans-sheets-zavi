@@ -8,7 +8,7 @@ import gsap from 'gsap';
 const HeaderSlider = () => {
 
     const headerList = [
-        { title: 'Qc Photos' },
+        { title: 'Quality' },
         { title: 'Prices' },
         { title: 'Links' },
     ];
