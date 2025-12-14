@@ -11,6 +11,9 @@ import Fix from './components/Fix';
 import EventLog from './components/EventLog';
 import Gg from './components/Gg';
 import SuggestionBox from './components/Vote';
+import { ArrowDown } from 'lucide-react';
+import Tutorial from './components/Tutorial';
+import HowToBuy from './components/Tutorial';
 
 export const marqueeList: string[] = [
   "Jordan 4",
@@ -36,6 +39,9 @@ export default function Home() {
           <HeaderSlider />
         </div>
         <ModelScene />
+        <div className="absolute bottom-10 animate-bounce">
+          <ArrowDown className="w-10 h-10 text-white/50" />
+        </div>
       </header>
       <div className='bg-[#121212] py-20 px-5 space-y-30'>
         <Gg />
