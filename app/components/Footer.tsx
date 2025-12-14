@@ -32,11 +32,11 @@ const Footer = () => {
             <nav>
               <ul className="space-y-2">
                 {/* Změnil jsem 'category' na 'shop' pokud tak máš strukturu, případně nech jak máš */}
-                <li><Link href="/shop?category=shoes" className="hover:text-blue-600/90 transition-colors">Shoes</Link></li>
-                <li><Link href="/shop?category=hoodies" className="hover:text-blue-600/90 transition-colors">Hoodies & Sweaters</Link></li>
-                <li><Link href="/shop?category=t-shirts" className="hover:text-blue-600/90 transition-colors">T-Shirts</Link></li>
-                <li><Link href="/shop?category=jackets" className="hover:text-blue-600/90 transition-colors">Jackets</Link></li>
-                <li><Link href="/shop?category=accessories" className="hover:text-blue-600/90 transition-colors">Accessories</Link></li>
+                <li><Link href="/category/shoes" className="hover:text-blue-600/90 transition-colors">Shoes</Link></li>
+                <li><Link href="/category/hoodies" className="hover:text-blue-600/90 transition-colors">Hoodies & Sweaters</Link></li>
+                <li><Link href="/category/t-shirts" className="hover:text-blue-600/90 transition-colors">T-Shirts</Link></li>
+                <li><Link href="/category/jackets" className="hover:text-blue-600/90 transition-colors">Jackets</Link></li>
+                <li><Link href="/category/accessories" className="hover:text-blue-600/90 transition-colors">Accessories</Link></li>
               </ul>
             </nav>
           </div>
