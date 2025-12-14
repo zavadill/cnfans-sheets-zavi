@@ -51,9 +51,9 @@ export default function Home() {
           ))}
         </Marquee>
         <BestFinds />
-        <EventLog />
         <Fix />
         <SuggestionBox />
+        <EventLog />
       </div>
     </main>
   );

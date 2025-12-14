@@ -60,7 +60,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
         <div className="flex flex-row justify-between items-center gap-5">
           <Link href={`/category/${kategoryNazev}`}>
-            <h1 className="font-bold text-xl sm:text-4xl capitalize">{kategoryNazev}</h1>
+          <div className="header-anim flex items-center gap-3 mb-2">
+            <h1 className="text-4xl capitalize font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 font-mono">{kategoryNazev}</h1>
+          </div>
           </Link>
           
           {/* Změna: Wrapper pro SearchBar a Reset tlačítko */}

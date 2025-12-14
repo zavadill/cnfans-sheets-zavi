@@ -154,9 +154,9 @@ export default function SuggestionBox() {
         
         {/* Hlavička */}
         <div className="header-anim flex items-center gap-3 mb-2">
-          <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 font-mono">
+          <h3 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 font-mono">
             Community Requests
-          </h2>
+          </h3>
         </div>
         
         <p className="header-anim text-gray-400 mb-8 ml-1">
