@@ -86,9 +86,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </h1>
           </div>
 
-          <div className="text-5xl font-semibold text-white/90">
+          <h2 className="text-5xl font-semibold text-white/90">
             $ {product.price} <span className="text-xl text-white/50 font-normal">USD</span>
-          </div>
+          </h2>
 
           <div className="pt-2 w-full md:w-auto font-mono">
             <Link 

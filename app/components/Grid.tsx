@@ -26,9 +26,9 @@ const Grid = ({ title, price, img, href }: GridProps) => {
         
         {/* Texty */}
         <div className="space-y-1">
-            <h3 className="text-sm sm:text-base font-medium text-white/90 line-clamp-1 group-hover:text-blue-400 transition-colors">
+            <p className="text-sm sm:text-base font-medium text-white/90 line-clamp-1 group-hover:text-blue-400 transition-colors">
                 {title}
-            </h3>
+            </p>
             <p className="text-sm sm:text-lg font-bold text-white">
                 $ {price}
             </p>

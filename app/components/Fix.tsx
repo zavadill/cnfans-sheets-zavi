@@ -4,7 +4,7 @@ const Fix = () => {
   return (
     <div className='max-w-7xl mx-auto space-y-5'>
           <div className='header-anim flex items-center gap-3 mb-2'>
-            <h3 className='text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 font-mono'>Link not working?</h3>
+            <h2 className='text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 font-mono'>Link not working?</h2>
           </div>
           {/* Tady je ten nový obsah */}
           <div 

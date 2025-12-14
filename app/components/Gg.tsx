@@ -143,13 +143,13 @@ const StatCard = ({ stat, index, isVisible }: { stat: typeof statsData[0], index
         {/* Textový obsah */}
         <div className="flex flex-col items-start">
           {/* Číslo - kovový/stříbrný gradient */}
-          <h3 className="
+          <p className="
             text-2xl sm:text-3xl font-bold tracking-tight
             bg-gradient-to-b from-white via-gray-200 to-gray-400 bg-clip-text text-transparent
             tabular-nums
           ">
             {count.toLocaleString('en-US')}{stat.suffix}
-          </h3>
+          </p>
 
           {/* Popisek */}
           <p className="text-white/50 text-xs font-medium uppercase tracking-wider">
