@@ -2,7 +2,6 @@ import React from 'react';
 import HeaderSlider from './components/HeaderSlider';
 import QrCode from './components/QrCode';
 import { Canvas } from '@react-three/fiber';
-import ModelScene from './components/Model';
 import Grid from './components/Grid';
 import Marquee from 'react-fast-marquee';
 import Win from './components/Win';
@@ -14,6 +13,8 @@ import SuggestionBox from './components/Vote';
 import { ArrowDown } from 'lucide-react';
 import Tutorial from './components/Tutorial';
 import HowToBuy from './components/Tutorial';
+import dynamic from 'next/dynamic';
+import ModelScene from './components/Model';
 
 export const marqueeList: string[] = [
   "Jordan 4",
@@ -27,7 +28,6 @@ export const marqueeList: string[] = [
   "Essentials"
 ];
  
-
 
 export default function Home() {
 
