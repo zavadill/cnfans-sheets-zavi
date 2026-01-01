@@ -3,7 +3,7 @@ import { ShieldAlert, Chrome, CheckCircle2 } from 'lucide-react';
 
 const Risk = () => {
   return (
-    <section className="w-full max-w-5xl mx-auto px-4 font-sans py-10">
+    <div className="w-full max-w-5xl mx-auto px-4 font-sans py-10">
       {/* Hlavní karta s tmavým pozadím a glow efektem */}
       <div className="relative group rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#1a1a1a] p-8 md:p-12">
         
@@ -20,7 +20,7 @@ const Risk = () => {
                 Risk Reminder?
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed">
-                Are annoying "Risk Reminder" popups blocking you from viewing products on CnFans? 
+                Are annoying "High Risk" popups blocking you from viewing products on CnFans? 
                 Use the official <strong>Clean View</strong> extension to bypass these warnings and browse seamlessly.
               </p>
             </div>
@@ -65,7 +65,7 @@ const Risk = () => {
 
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
