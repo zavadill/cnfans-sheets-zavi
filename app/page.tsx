@@ -15,6 +15,7 @@ import Tutorial from './components/Tutorial';
 import HowToBuy from './components/Tutorial';
 import dynamic from 'next/dynamic';
 import ModelScene from './components/Model';
+import Risk from './components/Risk';
 
 export const marqueeList: string[] = [
   "Jordan 4",
@@ -51,6 +52,7 @@ export default function Home() {
           ))}
         </Marquee>
         <Tutorial />
+        <Risk/>
         <BestFinds />
         <Fix />
         <SuggestionBox />
