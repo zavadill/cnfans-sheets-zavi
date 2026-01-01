@@ -50,6 +50,7 @@ export default function Home() {
             <p className=' px-4 sm:px-8' key={item}>{item}</p>
           ))}
         </Marquee>
+        <Tutorial />
         <BestFinds />
         <Fix />
         <SuggestionBox />

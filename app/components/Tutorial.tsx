@@ -1,9 +1,9 @@
 import React from 'react';
-import { PlayCircle, ShoppingBag, Youtube } from 'lucide-react';
+import { PlayCircle, ShoppingBag, Youtube as YoutubeIcon } from 'lucide-react';
 
 const HowToBuy = () => {
   return (
-    <section className="w-full max-w-5xl mx-auto px-4 font-sans">
+    <section className="w-full max-w-5xl mx-auto px-4 font-sans py-10">
       {/* Hlavička sekce */}
       <div className="text-center mb-10 space-y-4">
         <h2 className="text-3xl md:text-5xl font-bold text-white flex items-center justify-center gap-3 font-mono">
@@ -26,7 +26,7 @@ const HowToBuy = () => {
           <div className="relative pb-[56.25%] h-0">
             <iframe
               className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/WUrsMA_TMhc?si=EnSIkaIECMiOmarE" 
+              src="https://www.youtube.com/embed/woJz4w-uoPc?start=6"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
@@ -39,12 +39,12 @@ const HowToBuy = () => {
       {/* Tlačítko pod videem (Call to Action) */}
       <div className="mt-8 text-center">
         <a 
-          href="https://www.youtube.com/watch?v=WUrsMA_TMhc" 
+          href="https://www.youtube.com/watch?v=woJz4w-uoPc" 
           target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-white/70 hover:text-white hover:underline transition-colors"
         >
-          <Youtube className="w-5 h-5 text-red-500" />
+          <YoutubeIcon className="w-5 h-5 text-red-500" />
           Open directly on YouTube
         </a>
       </div>
